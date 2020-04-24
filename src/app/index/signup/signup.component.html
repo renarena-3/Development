@@ -1,0 +1,146 @@
+<div class="container">
+<div class="card bg-light">
+<article class="card-body mx-auto" style="max-width: 400px;">
+	<h4 class="card-title mt-3 text-center">Account Registration </h4>
+  <form [formGroup]="studentsaveform" (ngSubmit)="onSubmit()">
+	<div class="form-group input-group">
+		<div class="input-group-prepend">
+		    <span class="input-group-text"><i class="fa fa-user"></i> </span>  
+		 </div>
+        <input name="" class="form-control" formControlName="firstName" placeholder=" First Name" type="text" required>&nbsp;
+        <span *ngIf="!studentsaveform.get('firstName').valid && studentsaveform.get('firstName').touched && studentsaveform.get('lastName')"
+           class="help-block">Please Enter First Name</span>
+    </div> 
+	<div class="form-group input-group">
+		<div class="input-group-prepend">
+		    <span class="input-group-text"><i class="fa fa-user"></i> </span>
+		 </div>
+        <input name="" class="form-control" formControlName="lastName" placeholder=" Last Name" type="text">
+        &nbsp;
+        <span *ngIf="!studentsaveform.get('lastName').valid && studentsaveform.get('lastName').touched" 
+           class="help-block">Please Enter Last Name</span>
+    </div> 
+
+    <!-- form-group// -->
+    <div class="form-group input-group">
+    	<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+		 </div>
+        <input name="" class="form-control" formControlName="email" placeholder="Email address" type="email">
+        &nbsp;
+        <span *ngIf="!studentsaveform.get('email').valid && studentsaveform.get('email').touched" 
+        class="help-block">Please Enter Student Branch</span>
+    </div> 
+     <!-- form-group end.// -->
+     <div class="form-group input-group">
+    	<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+		</div>
+        <input class="form-control" formControlName="password" placeholder="Create password" type="password">
+        <span *ngIf="!studentsaveform.get('password').valid && studentsaveform.get('password').touched" 
+        class="help-block">Please Enter Student Branch</span>
+    </div>
+    
+     <!-- form-group// -->
+     <div class="form-group input-group">
+    	<div class="input-group-prepend">
+		    <span class="input-group-text"><i class="fa fa-birthday-cake"></i> </span>
+		</div>
+        <!-- <input class="form-control" formControlName="dob" placeholder="Date Of Bir(th" type="text"> -->
+        <!-- <input class="form-control" 
+             name="dp" formControlName="dob" ngbDatepicker #d="ngbDatepicker"> -->
+
+             <!-- <input type="text" class="form-control"  placeholder="Date Of Birth (yyyy-mm-dd) " formControlName="dob" datepicker
+                  data-provide="datepicker"> -->
+                  <input type="date"  formControlName="dob" placeholder="dob"/>
+             
+             <div class="input-group-append">
+     
+      </div>
+        &nbsp;
+        <span *ngIf="!studentsaveform.get('dob').valid && studentsaveform.get('dob').touched" 
+        class="help-block">Please Enter Student Branch</span>
+    </div>
+     <!-- form-group// -->
+     <div class="form-group input-group">
+    	<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="	fa fa-mars"></i> </span> &nbsp; &nbsp;
+        <div class="form-check">
+          <input type="radio" class="form-check-input" id="materialUnchecked2" value="male"
+                 formControlName="gender" name="gender" >
+          <label class="form-check-label" for="materialUnchecked2">Male</label> &nbsp; &nbsp;
+        </div>
+          <div class="form-check">
+            <input type="radio" class="form-check-input" id="materialChecked2" value="female"
+                   formControlName="gender" name="gender">
+            <label class="form-check-label" for="materialChecked2">Female</label>
+          </div>
+          </div>
+          &nbsp;
+          <span *ngIf="!studentsaveform.get('gender').valid && studentsaveform.get('gender').touched" 
+          class="help-block">Please Enter Student Branch</span>
+        
+        </div>
+    
+    <!--form group-->      
+     
+    <div class="form-group input-group">
+    	<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
+		</div>
+		<select class="custom-select" style="max-width: 80px;">
+		    <option selected="">+91</option>
+		    <option value="1">+1</option>
+		</select>
+      <input name="" class="form-control"formControlName="phno" placeholder="Phone number" type="text">
+      &nbsp;
+      <span *ngIf="!studentsaveform.get('phno').valid && studentsaveform.get('phno').touched" 
+      class="help-block">Please Enter Phone Number</span>
+    </div>
+     <!-- form-group// -->
+    <div class="form-group input-group">
+    	<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-building"></i> </span>
+		</div>
+    <!-- 
+      <select formControlName="r">
+      <option [ngValue]="null" disabled>Select Job Type</option>
+      <option *ngFor="let r of role" [ngValue]="r">
+       {{ r }}
+      </option>
+    </select>  --> 
+     <!-- <select formControlName="roleid">
+    <option *ngFor="let r of roleid" [value]="r.value">
+      {{ r.viewValue }}
+    </option>
+  </select> -->
+  <!-- <select formControlName="roles">
+    <option *ngFor="let r of roles" |async [value]="r.roleid">
+      {{ r.rolename }}
+    </option>
+  </select>
+ -->
+  <select  formControlName="role">
+    <option [ngValue]="source.fieldvalue"
+      *ngFor="let source of (slaparam._slaparamData$ | async | filter :{fieldname:'role'})"
+      selected="source.defaultvalue =='Y'">{{source.name}}</option>
+  </select>
+     
+  &nbsp;
+    <span *ngIf="!studentsaveform.get('role').valid && studentsaveform.get('role').touched" 
+    class="help-block">Please Select Your Job</span>
+  </div>
+   <!-- form-group// -->     
+                                    
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary btn-block">Register</button>
+    </div> 
+    <!-- form-group// -->      
+    <p class="text-center">Have an account? <a href="">Log In</a> </p>                                                                 
+</form>
+</article>
+</div> <!-- card.// -->
+
+</div> 
+<!--container end.//-->
+
